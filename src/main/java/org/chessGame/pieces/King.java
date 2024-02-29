@@ -1,12 +1,13 @@
 package org.chessGame.pieces;
 
 import org.chessGame.board.Board;
+import org.chessGame.board.Piece;
 import org.chessGame.board.Square;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class King extends Piece{
+public class King extends Piece {
 
     public King(int color, Square currentSquare) {
         super(color, currentSquare);

@@ -1,25 +1,21 @@
 package org.chessGame.board;
 
-import org.chessGame.pieces.Piece;
-
-public abstract class Square {
+public class Square {
     private Board board;
-    private final int color;
     private Piece pieceOccupied;
     boolean isSquareOccupied;
     private int xCoordinate;
     private int yCoordinate;
 
-    public Square(Board board, int color, Piece pieceOccupied, int xCoordinate, int yCoordinate) {
+    public Square(Board board, Piece pieceOccupied, int xCoordinate, int yCoordinate) {
         this.board = board;
-        this.color = color;
         this.pieceOccupied = pieceOccupied;
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
     }
 
-    public int getColor() {
-        return color;
+    public Board getBoard() {
+        return board;
     }
 
     public Piece getPieceOccupied() {

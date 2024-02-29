@@ -1,7 +1,4 @@
-package org.chessGame.pieces;
-
-import org.chessGame.board.Board;
-import org.chessGame.board.Square;
+package org.chessGame.board;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -13,6 +10,10 @@ public abstract class Piece {
     public Piece(int color, Square currentSquare) {
         this.color = color;
         this.currentSquare = currentSquare;
+    }
+
+    public Square getCurrentSquare() {
+        return currentSquare;
     }
 
     public boolean canMovePiece(Square squareGoal){
@@ -46,6 +47,8 @@ public abstract class Piece {
         int lastXleft = 0;
         int lastYup = 0;
         int lastYdown = 7;
+        //si le square contient la meme piece de meme couleur donc
+        //la piece courant se deplace jusqu'à square avant la piece
         //pour les squares existent vertical au-dessus de position de piece x,y
         for (int i = 0; i < y; i++) {
             if (board[i][x].isSquareOccupied()) {
@@ -159,4 +162,13 @@ public abstract class Piece {
         return diagOccup;
     }
     public abstract List<Square> getPossibleMoves(Board board);
+    public  void move(int currentX, int currentY,int newX, int newY){
+        List<Square> possibleSquares = getPossibleMoves(this.getCurrentSquare().getBoard());
+        Square currentSquare = new Square(this.getCurrentSquare().getBoard(),this.getCurrentSquare().getPieceOccupied(), currentX, currentY);
+        Square newSquare = new Square(this.getCurrentSquare().getBoard(),this.getCurrentSquare().getPieceOccupied(), newX, newY);
+        if(possibleSquares.contains(newSquare)){
+            newSquare.putPiece(currentSquare.getPieceOccupied());
+            currentSquare.removePiece();
+        }
+    }
 }

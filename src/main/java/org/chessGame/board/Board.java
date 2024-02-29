@@ -1,9 +1,5 @@
 package org.chessGame.board;
 
-import org.chessGame.pieces.Piece;
-
-import java.util.List;
-
 public class Board {
     private final Square[][] board;
     public Board(Square[][] board) {
