@@ -26,11 +26,12 @@ public class King extends Piece {
             for (int k = 1; k >= -1; k--) {
                 if(i != 0 || k != 0) {
                     try {
-                        if(!board[y + k][x + i].isSquareOccupied() && board[y + k][x + i].getPieceOccupied().getColor() != this.getColor()) {
-                            legalMoves.add(board[y + k][x + i]);
+                        Square potentialMove = board[y + k][x + i];
+                        if (!potentialMove.isSquareOccupied() || potentialMove.getPieceOccupied().getColor() != this.getColor()) {
+                            legalMoves.add(potentialMove);
                         }
                     } catch (ArrayIndexOutOfBoundsException e) {
-                        continue;
+                        // Ignore invalid positions
                     }
                 }
             }

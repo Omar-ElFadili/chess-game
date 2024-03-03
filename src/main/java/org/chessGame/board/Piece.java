@@ -162,13 +162,5 @@ public abstract class Piece {
         return diagOccup;
     }
     public abstract List<Square> getPossibleMoves(Board board);
-    public  void move(int currentX, int currentY,int newX, int newY){
-        List<Square> possibleSquares = getPossibleMoves(this.getCurrentSquare().getBoard());
-        Square currentSquare = new Square(this.getCurrentSquare().getBoard(),this.getCurrentSquare().getPieceOccupied(), currentX, currentY);
-        Square newSquare = new Square(this.getCurrentSquare().getBoard(),this.getCurrentSquare().getPieceOccupied(), newX, newY);
-        if(possibleSquares.contains(newSquare)){
-            newSquare.putPiece(currentSquare.getPieceOccupied());
-            currentSquare.removePiece();
-        }
-    }
+
 }
